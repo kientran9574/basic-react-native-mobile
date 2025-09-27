@@ -104,7 +104,7 @@ const SignIn = () => {
           },
         });
         router.replace({
-          pathname: "/",
+          pathname: "/(tabs)",
         });
       } else {
         Toast.show({

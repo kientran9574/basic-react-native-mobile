@@ -3,7 +3,7 @@ import MainButton from "@/src/components/button/MainButton";
 import SocialButton from "@/src/components/button/SocialButton";
 import Entypo from "@expo/vector-icons/Entypo";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
+import { Link, Redirect, router } from "expo-router";
 import React from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import "../global.css";
@@ -59,11 +59,11 @@ const Welcom = () => {
       opacity: 0.4,
     },
   });
-  // if(true) {
-  //   return (
-  //   <Redirect href="/(auth)/sign-in" />
-  //   )
-  // }
+  if(true) {
+    return (
+    <Redirect href="/(tabs)" />
+    )
+  }
   return (
     <ImageBackground source={bg} className="flex-1">
       <LinearGradient
@@ -106,6 +106,9 @@ const Welcom = () => {
               pressStyle="w-[315px] h-[54px] py-4 px-2 rounded-[27.5px] border border-[#FFFFFF] bg-[#535463]  active:opacity-55"
               textStyle="text-center text-white text-lg font-extrabold font-bold"
               title="Start with your email"
+              onPress={() => {
+                router.replace("/(auth)/sign-in")
+              }}
             ></MainButton>
             <View className="flex-row items-center justify-center mt-6">
               <Text className="text-base leading-[10px] text-white font-bold">
