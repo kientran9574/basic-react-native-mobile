@@ -14,6 +14,7 @@ interface IProps {
   placeholder?: string;
   value?: string;
   onChangeText?: (value: string) => void;
+  defaultValue?: string | undefined;
 }
 const MainInput = ({
   label,
@@ -28,12 +29,14 @@ const MainInput = ({
   value,
   onChangeText,
   placeholder,
+  defaultValue,
 }: IProps) => {
   return (
     <View className={`${containerInputStyle} ${error ? "border-red-500" : ""}`}>
       {label && <Text className={textStyle}>{label}</Text>}
       <View>
         <TextInput
+          defaultValue={defaultValue}
           className={textInputStyle}
           value={value}
           placeholder={placeholder}

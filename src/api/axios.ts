@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios, { AxiosError } from "axios";
 
 export const axiosInstance = axios.create({
@@ -9,12 +10,15 @@ export const axiosInstance = axios.create({
 // - Nếu dùng SecureStore/AsyncStorage: inject khi tạo request
 // - Có thể truyền qua closure hoặc 1 tokenStore module
 let accessToken: string | null = null;
-export const setAccessToken = (token: string | null) => {
-  accessToken = token;
-};
+// export const setAccessToken = (token: string | null) => {
+//   accessToken = token;
+// };
 
 // REQUEST interceptor: đính kèm Authorization + AbortController
-axiosInstance.interceptors.request.use((config: any) => {
+axiosInstance.interceptors.request.use(async (config: any) => {
+  config.headers["delay"] = 3000;
+  accessToken = await AsyncStorage.getItem("access_token");
+  console.log("🚀 ~ accessToken:", accessToken);
   if (accessToken) {
     config.headers = {
       ...config.headers,
@@ -36,7 +40,7 @@ axiosInstance.interceptors.response.use(
   async (error: AxiosError) => {
     // can thiệp khi backend trả error cho client thì mình can thiệp vào lúc
     // backend trả ra lỗi
-    // Nếu có lỗi trả ra thì nó rơi vào đoạn điều kiện else 
+    // Nếu có lỗi trả ra thì nó rơi vào đoạn điều kiện else
     if (error && error.response?.data) return error.response.data;
     // Ví dụ: nếu 401 -> thử refresh, sau đó retry 1 lần (viết rút gọn)
     if (error.response?.status === 401) {
@@ -45,7 +49,7 @@ axiosInstance.interceptors.response.use(
       // Nếu thất bại: logout
     }
     // chuẩn hoá object Error để layer trên dễ hiển thị
-    // nó sẽ rơi vào đoạn catch dành cho Promise, try/catch 
+    // nó sẽ rơi vào đoạn catch dành cho Promise, try/catch
     return Promise.reject(error);
   }
 );

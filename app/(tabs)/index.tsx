@@ -2,7 +2,9 @@ import CustomFlatList from "@/src/components/CustomFlatList/CustomFlatList";
 import CollectionHome from "@/src/components/home/collection.home";
 import SearchHome from "@/src/components/home/search.home";
 import TopListHome from "@/src/components/home/top-list.home";
-import React from "react";
+import { useAppContext } from "@/src/context/app.context";
+import { useMeQuery } from "@/src/features/me/hook";
+import React, { useCallback, useEffect } from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 
 // const data = Array(10).fill(1);
@@ -15,6 +17,7 @@ const data = [
 
 const HomeTab = () => {
   // const MyComponent = () => {
+
   // https://stackoverflow.com/questions/45939823/react-native-horizontal-flatlist-with-multiple-rows
   //   return (
   //     <View style={styles.topList}>
@@ -55,8 +58,21 @@ const HomeTab = () => {
   //     </View>
   //   );
   // };
+  // const meQuery = useMeQuery();
+  // const { setProfile } = useAppContext();
+  // const fetchingDataMe = useCallback(() => {
+  //   const res = meQuery.data;
+  //   return res;
+  // }, [meQuery.data]);
+  // useEffect(() => {
+  //   const res = fetchingDataMe();
+  //   if (res) {
+  //     console.log("index home", res);
+  //   } else {
+  //   }
+  // }, [fetchingDataMe, setProfile]);
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView className="flex-1 mt-12">
       <CustomFlatList
         data={data}
         style={styles.list}

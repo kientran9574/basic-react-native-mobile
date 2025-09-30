@@ -38,7 +38,7 @@ export const useCustomFlatListHook = (): TUseCustomFlatListHook => {
     stickyElement: {
       left: 0,
       marginTop: heights.header, // <-- In order for the list to be under Header
-      position: "absolute",
+      position: "sticky",
       right: 0,
       transform: [
         {

@@ -4,11 +4,14 @@ import line128 from "@/assets/images/auth/line-128.png";
 import MainButton from "@/src/components/button/MainButton";
 import SocialButton from "@/src/components/button/SocialButton";
 import MainInput from "@/src/components/input/share.input";
+import { useAppContext } from "@/src/context/app.context";
 import { useSignInMutation } from "@/src/features/auth/hook";
+import { useMeQuery } from "@/src/features/me/hook";
 import { LoginBody, loginSchema } from "@/src/schema/auth";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { zodResolver } from "@hookform/resolvers/zod";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -68,6 +71,7 @@ const SignIn = () => {
     },
   });
   const [isShowPassword, setShowPassword] = useState(false);
+  const { setProfile } = useAppContext();
   const {
     control,
     handleSubmit,
@@ -80,6 +84,7 @@ const SignIn = () => {
   });
   const [loading, setLoading] = useState(false);
   const signInMutation = useSignInMutation();
+  const meQuery = useMeQuery();
   const onSubmit = async (values: LoginBody) => {
     console.log(values);
     setLoading(true);
@@ -88,6 +93,10 @@ const SignIn = () => {
       console.log("🚀 ~ onSubmit ~ res:", res);
       if (res.data) {
         setLoading(false);
+        await AsyncStorage.setItem("access_token", res.data.access_token);
+        const me = meQuery.data;
+        console.log("🚀 ~ onSubmit ~ me:", me);
+        setProfile(me?.data || null);
         Toast.show({
           type: "success",
           text1: "Successfully",
