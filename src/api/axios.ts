@@ -16,7 +16,7 @@ let accessToken: string | null = null;
 
 // REQUEST interceptor: đính kèm Authorization + AbortController
 axiosInstance.interceptors.request.use(async (config: any) => {
-  config.headers["delay"] = 3000;
+  // config.headers["delay"] = 3000;
   accessToken = await AsyncStorage.getItem("access_token");
   console.log("🚀 ~ accessToken:", accessToken);
   if (accessToken) {

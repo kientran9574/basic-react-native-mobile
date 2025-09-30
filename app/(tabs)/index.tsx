@@ -2,9 +2,7 @@ import CustomFlatList from "@/src/components/CustomFlatList/CustomFlatList";
 import CollectionHome from "@/src/components/home/collection.home";
 import SearchHome from "@/src/components/home/search.home";
 import TopListHome from "@/src/components/home/top-list.home";
-import { useAppContext } from "@/src/context/app.context";
-import { useMeQuery } from "@/src/features/me/hook";
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 
 // const data = Array(10).fill(1);
@@ -16,61 +14,6 @@ const data = [
 ];
 
 const HomeTab = () => {
-  // const MyComponent = () => {
-
-  // https://stackoverflow.com/questions/45939823/react-native-horizontal-flatlist-with-multiple-rows
-  //   return (
-  //     <View style={styles.topList}>
-  //       <ScrollView
-  //         horizontal
-  //         showsHorizontalScrollIndicator={false}
-  //         directionalLockEnabled={true}
-  //         alwaysBounceVertical={false}
-  //       >
-  //         <FlatList
-  //           //  Nếu như sử dụng props numColumns nó chỉ hỗ trợ theo chiều dọc thôi, not support ngang
-  //           // ý tưởng bọc vào ScrollView -> việc cuộn chuột thì do thằng ScrollView
-  //           // Hiển thị data thì là thằng FlatList
-  //           contentContainerStyle={{ alignSelf: "flex-start" }}
-  //           numColumns={Math.ceil(data1.length / 2)}
-  //           showsVerticalScrollIndicator={false}
-  //           showsHorizontalScrollIndicator={false}
-  //           data={data1}
-  //           renderItem={({ item, index }) => {
-  //             return (
-  //               <View
-  //                 style={{
-  //                   padding: 10,
-  //                   margin: 5,
-  //                   borderWidth: 1,
-  //                   borderColor: "#ccc",
-  //                   width: 50,
-  //                   height: 50,
-  //                   alignSelf: "flex-start",
-  //                 }}
-  //               >
-  //                 <Text>{index + 1}</Text>
-  //               </View>
-  //             );
-  //           }}
-  //         />
-  //       </ScrollView>
-  //     </View>
-  //   );
-  // };
-  // const meQuery = useMeQuery();
-  // const { setProfile } = useAppContext();
-  // const fetchingDataMe = useCallback(() => {
-  //   const res = meQuery.data;
-  //   return res;
-  // }, [meQuery.data]);
-  // useEffect(() => {
-  //   const res = fetchingDataMe();
-  //   if (res) {
-  //     console.log("index home", res);
-  //   } else {
-  //   }
-  // }, [fetchingDataMe, setProfile]);
   return (
     <SafeAreaView className="flex-1 mt-12">
       <CustomFlatList

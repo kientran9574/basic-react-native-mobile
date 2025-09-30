@@ -27,7 +27,9 @@ const RootPage = () => {
     const prepare = async () => {
       try {
         const res = meQuery.data;
+        console.log("🚀 ~ prepare ~ res:", res);
         if (res?.data) {
+          console.log("🚀 ~ prepare ~ res part kien tran 123", res);
           setProfile(res.data);
           router.replace("/(tabs)");
         } else {
