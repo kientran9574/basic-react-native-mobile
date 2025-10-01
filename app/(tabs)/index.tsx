@@ -8,9 +8,9 @@ import { SafeAreaView, StyleSheet } from "react-native";
 // const data = Array(10).fill(1);
 
 const data = [
-  { key: 1, name: "Top Quán Rating 5* tuần này", ref: "" },
-  { key: 2, name: "Quán Mới Lên Sàn", ref: "" },
-  { key: 3, name: "Ăn Thỏa Thích, Freeship 0Đ", ref: "" },
+  { key: 1, name: "Top Quán Rating 5* tuần này", refApi: "top-rating" },
+  { key: 2, name: "Quán Mới Lên Sàn", refApi: "newcomer" },
+  { key: 3, name: "Ăn Thỏa Thích, Freeship 0Đ", refApi: "top-freeship" },
 ];
 
 const HomeTab = () => {
@@ -18,8 +18,12 @@ const HomeTab = () => {
     <SafeAreaView className="flex-1 mt-12">
       <CustomFlatList
         data={data}
+        className="bg-gray-300 mb-2 -z-10"
         style={styles.list}
-        renderItem={({ item }) => <CollectionHome name={item.name} />}
+        keyExtractor={(item) => item.key.toString()}
+        renderItem={({ item }) => (
+          <CollectionHome name={item.name} refApi={item.refApi} />
+        )}
         HeaderComponent={<></>}
         StickyElementComponent={<SearchHome></SearchHome>}
         // TopListElementComponent={<View style={styles.topList} />}

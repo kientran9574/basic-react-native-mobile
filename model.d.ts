@@ -24,6 +24,18 @@ declare global {
     };
     access_token: string;
   }
+  interface IRestaurent {
+    _id: string;
+    name: string;
+    phone: string;
+    address: string;
+    email: string;
+    rating: number;
+    image: string;
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date
+  }
 }
 declare module "axios" {
   export interface AxiosResponse<T = any> extends Promise<T> {}

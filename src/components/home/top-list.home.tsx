@@ -54,7 +54,7 @@ const data1 = [
 
 const TopListHome = () => {
   return (
-    <View className="w-full">
+    <View className="w-full bg-white">
       <BannerHome></BannerHome>
       <View className="flex-1 w-full m-h-[120px] mb-2">
         <ScrollView
