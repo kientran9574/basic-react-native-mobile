@@ -24,5 +24,6 @@ export const APP_COLORS = {
     tabIconSelected: tintColorDark,
   },
   ORANGE: "#FE724C",
+  GREY: "bg-gray-500",
 };
-export default APP_COLORS
+export default APP_COLORS;

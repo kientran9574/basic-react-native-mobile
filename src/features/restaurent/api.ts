@@ -5,5 +5,7 @@ const restaurentApi = {
     axiosInstance.post<IBackendBase<IRestaurent[]>>(
       `api/v1/restaurants/${refApi}`
     ),
+  getRestaurentId: (id: string) =>
+    axiosInstance.get<IBackendBase<IRestaurent>>(`api/v1/restaurants/${id}`),
 };
 export default restaurentApi;

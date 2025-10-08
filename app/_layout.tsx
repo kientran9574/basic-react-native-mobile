@@ -64,7 +64,20 @@ export default function RootLayout() {
                   }}
                 />
                 <Stack.Screen
+                  name="product/index"
+                  options={{
+                    headerTitle: "Prodct Code",
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
                   name="(auth)/welcome"
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="product/[id]"
                   options={{
                     headerShown: false,
                   }}

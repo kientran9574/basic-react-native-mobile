@@ -1,5 +1,6 @@
 import APP_COLORS from "@/src/constants/Colors";
 import restaurentApi from "@/src/features/restaurent/api";
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
 interface IProps {
@@ -12,7 +13,6 @@ const CollectionHome = ({ name, refApi }: IProps) => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await restaurentApi.getRestaurentAPI(refApi);
-      console.log("🚀 ~ fetchData ~ res:", res);
       setRestaurants(res.data || []);
     };
     fetchData();
@@ -40,22 +40,31 @@ const CollectionHome = ({ name, refApi }: IProps) => {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <View className="">
-            <Image
-              className="w-[150px] h-[150px] object-cover mr-1"
-              source={{ uri: `${baseBackend}/${item.image}` }}
-            ></Image>
+          <Pressable
+            onPress={() => {
+              router.navigate({
+                pathname: "/product/[id]",
+                params: { id: item._id },
+              });
+            }}
+          >
+            <View className="">
+              <Image
+                className="w-[150px] h-[150px] object-cover mr-1"
+                source={{ uri: `${baseBackend}/${item.image}` }}
+              ></Image>
 
-            <View>
-              <Text
-                numberOfLines={2}
-                className="max-w-[150px]"
-                ellipsizeMode="tail"
-              >
-                {item.name}
-              </Text>
+              <View>
+                <Text
+                  numberOfLines={2}
+                  className="max-w-[150px]"
+                  ellipsizeMode="tail"
+                >
+                  {item.name}
+                </Text>
+              </View>
             </View>
-          </View>
+          </Pressable>
         )}
       ></FlatList>
     </View>

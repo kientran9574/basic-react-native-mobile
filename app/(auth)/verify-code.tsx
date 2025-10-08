@@ -106,7 +106,6 @@ const VerifyCode = () => {
   );
   const handleResendCode = async () => {
     if (resendCodeMutation.isPending) return;
-    console.log(email);
     try {
       const res = await resendCodeMutation.mutateAsync({ email });
       if (res.data) {

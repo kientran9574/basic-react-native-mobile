@@ -86,16 +86,13 @@ const SignIn = () => {
   const signInMutation = useSignInMutation();
   const meQuery = useMeQuery();
   const onSubmit = async (values: LoginBody) => {
-    console.log(values);
     setLoading(true);
     try {
       const res = await signInMutation.mutateAsync(values);
-      console.log("🚀 ~ onSubmit ~ res:", res);
       if (res.data) {
         setLoading(false);
         await AsyncStorage.setItem("access_token", res.data.access_token);
         const me = meQuery.data;
-        console.log("🚀 ~ onSubmit ~ me:", me);
         setProfile(me?.data || null);
         Toast.show({
           type: "success",

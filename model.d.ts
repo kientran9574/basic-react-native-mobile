@@ -34,7 +34,31 @@ declare global {
     image: string;
     isActive: boolean;
     createdAt: Date;
-    updatedAt: Date
+    updatedAt: Date;
+    menu: IMenu[];
+  }
+  interface IMenu {
+    _id: string;
+    restaurant: string;
+    createdAt: Date;
+    updatedAt: Date;
+    title: string;
+    menuItem: IMenuItem[];
+  }
+  interface IMenuItem {
+    _id: string;
+    menu: string;
+    title: string;
+    description: string;
+    basePrice: number;
+    image: string;
+    options: {
+      title: string;
+      description: string;
+      additionalPrice: number;
+    }[];
+    createdAt: Date;
+    updatedAt: Date;
   }
 }
 declare module "axios" {

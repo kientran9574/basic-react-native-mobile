@@ -18,7 +18,6 @@ let accessToken: string | null = null;
 axiosInstance.interceptors.request.use(async (config: any) => {
   // config.headers["delay"] = 3000;
   accessToken = await AsyncStorage.getItem("access_token");
-  console.log("🚀 ~ accessToken:", accessToken);
   if (accessToken) {
     config.headers = {
       ...config.headers,
