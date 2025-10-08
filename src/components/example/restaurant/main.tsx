@@ -22,8 +22,8 @@ import Animated, {
 } from "react-native-reanimated";
 import Info from "./info";
 import ItemOrder from "./orders/item.order";
-import StickyHeader from "./sticky.header";
 import StickyOrder from "./orders/sticky.order";
+import StickyHeader from "./sticky.header";
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
@@ -250,7 +250,7 @@ const RMain = ({ restaurant }: IProps) => {
         stickySectionHeadersEnabled={false}
         contentContainerStyle={{
           paddingTop: IMAGE_HEIGHT + INFO_HEIGHT + SLIDE_MENU_HEIGHT,
-          paddingBottom: 50,
+          paddingBottom: 60,
         }}
         sections={DATA}
         renderItem={({ item, index }: { item: any; index: any }) => {

@@ -8,11 +8,11 @@ interface IProps {
 }
 const ItemOrder = ({ menuItem }: IProps) => {
   return (
-    <View className="items-center justify-center">
+    <View className="flex-row items-center justify-center">
       <Pressable
-        className={`size-6 bg-[${APP_COLORS.GREY}] items-center justify-center`}
+        className={`size-6 bg-slate-100 items-center justify-center`}
       >
-        <MaterialIcons name="remove" size={24} color="white" />
+        <MaterialIcons name="remove" size={24} color="black" />
       </Pressable>
       <View className="mx-2">
         <Text>ItemOrder</Text>
