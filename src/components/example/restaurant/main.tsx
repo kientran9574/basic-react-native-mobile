@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import { APP_COLORS } from "@/src/constants/Colors";
 import { processDataRestaurantMenu } from "@/src/utils/restaurant";
 import { useRef, useState } from "react";
@@ -278,7 +279,10 @@ const RMain = ({ restaurant }: IProps) => {
                   <Text className="text-slate-400 font-bold">
                     {menuItem.basePrice}
                   </Text>
-                  <ItemOrder menuItem={menuItem}></ItemOrder>
+                  <ItemOrder
+                    menuItem={menuItem}
+                    restaurant={restaurant}
+                  ></ItemOrder>
                 </View>
               </View>
             </View>
